@@ -15,6 +15,15 @@
       rel="stylesheet"
     />
     <title>Quizora — Quiz Player</title>
+    <script>
+      ;(function () {
+        var stored = localStorage.getItem('quizora-theme')
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark')
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

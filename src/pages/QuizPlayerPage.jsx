@@ -37,6 +37,7 @@ export default function QuizPlayerPage() {
   const answersRef = useRef({})
   const indexRef = useRef(0)
   const sessionRef = useRef(session)
+  const advanceTimeoutRef = useRef(null)
 
   useEffect(() => {
     lockedRef.current = locked
@@ -57,6 +58,12 @@ export default function QuizPlayerPage() {
   useEffect(() => {
     sessionRef.current = session
   }, [session])
+
+  useEffect(() => {
+    return () => {
+      if (advanceTimeoutRef.current) window.clearTimeout(advanceTimeoutRef.current)
+    }
+  }, [])
 
   useEffect(() => {
     if (!baseQuiz) {
@@ -112,7 +119,9 @@ export default function QuizPlayerPage() {
 
       const isLast = currentIndex >= currentSession.questions.length - 1
 
-      window.setTimeout(() => {
+      if (advanceTimeoutRef.current) window.clearTimeout(advanceTimeoutRef.current)
+      advanceTimeoutRef.current = window.setTimeout(() => {
+        advanceTimeoutRef.current = null
         setShowFeedback(false)
 
         if (isLast) {

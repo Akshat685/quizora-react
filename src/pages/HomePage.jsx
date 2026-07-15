@@ -21,7 +21,7 @@ export default function HomePage() {
         </p>
 
         {/* Gradient hero heading with decorative emoji */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1">
           <h1 className="text-gradient-brand font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
             Quizora
           </h1>

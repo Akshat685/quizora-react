@@ -1,9 +1,12 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import Header from './components/Header'
+import LoadingState from './components/LoadingState'
 import HomePage from './pages/HomePage'
-import QuizPlayerPage from './pages/QuizPlayerPage'
-import ResultsPage from './pages/ResultsPage'
+
+const QuizPlayerPage = lazy(() => import('./pages/QuizPlayerPage'))
+const ResultsPage = lazy(() => import('./pages/ResultsPage'))
 
 export default function App() {
   const location = useLocation()
@@ -20,12 +23,14 @@ export default function App() {
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
           >
-            <Routes location={location}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/quiz/:quizId" element={<QuizPlayerPage />} />
-              <Route path="/quiz/:quizId/results" element={<ResultsPage />} />
-              <Route path="*" element={<HomePage />} />
-            </Routes>
+            <Suspense fallback={<LoadingState message="Loading page…" />}>
+              <Routes location={location}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/quiz/:quizId" element={<QuizPlayerPage />} />
+                <Route path="/quiz/:quizId/results" element={<ResultsPage />} />
+                <Route path="*" element={<HomePage />} />
+              </Routes>
+            </Suspense>
           </motion.div>
         </AnimatePresence>
       </main>
