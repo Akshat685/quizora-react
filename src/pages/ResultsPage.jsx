@@ -278,11 +278,10 @@ export default function ResultsPage() {
                       initial={{ opacity: 0, x: -12 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: qi * 0.04 }}
-                      className={`rounded-xl border p-4 sm:p-5 ${
-                        isCorrect
+                      className={`rounded-xl border p-4 sm:p-5 ${isCorrect
                           ? 'border-emerald-200 bg-emerald-50/50 dark:border-emerald-800/40 dark:bg-emerald-950/20'
                           : 'border-red-200 bg-red-50/50 dark:border-red-800/40 dark:bg-red-950/20'
-                      }`}
+                        }`}
                     >
                       <div className="mb-2 flex items-start gap-2">
                         <span className="mt-0.5 text-base" aria-hidden>
