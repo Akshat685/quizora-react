@@ -1,12 +1,25 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import quizData from '../data/quiz.json'
+import quizData from '../data/quizzes-list.json'
 import QuizCard from '../components/QuizCard'
 import { EmptyState } from '../components/LoadingState'
+import { cloudinaryUrl } from '../lib/cloudinary'
 
 export default function HomePage() {
   const quizzes = useMemo(() => quizData.quizzes ?? [], [])
+
+  useEffect(() => {
+    const thumbnail = quizzes[0]?.thumbnail
+    if (!thumbnail) return
+
+    const link = document.createElement('link')
+    link.rel = 'preload'
+    link.as = 'image'
+    link.href = cloudinaryUrl(thumbnail, 640)
+    document.head.appendChild(link)
+    return () => link.remove()
+  }, [quizzes])
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">

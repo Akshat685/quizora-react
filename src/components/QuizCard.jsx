@@ -3,9 +3,13 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { difficultyStyles } from '../utils/quiz'
 import { unlockAudio, sounds } from '../lib/sounds'
+import { cloudinarySrcSet, cloudinaryUrl } from '../lib/cloudinary'
 
 export default function QuizCard({ quiz, index = 0 }) {
   const [imgError, setImgError] = useState(false)
+  const isLcp = index === 0
+  const src = cloudinaryUrl(quiz.thumbnail, 640)
+  const srcSet = cloudinarySrcSet(quiz.thumbnail)
 
   return (
     <motion.article
@@ -25,10 +29,13 @@ export default function QuizCard({ quiz, index = 0 }) {
           </div>
         ) : (
           <img
-            src={quiz.thumbnail}
+            src={src}
+            srcSet={srcSet}
+            sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
             alt={`${quiz.title} quiz banner`}
             className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-            loading="lazy"
+            loading={isLcp ? 'eager' : 'lazy'}
+            fetchPriority={isLcp ? 'high' : undefined}
             decoding="async"
             onError={() => setImgError(true)}
           />

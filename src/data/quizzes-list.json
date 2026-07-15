@@ -1,0 +1,54 @@
+{
+  "quizzes": [
+    {
+      "id": "quiz_1",
+      "title": "General Knowledge",
+      "description": "General Knowledge quiz.",
+      "thumbnail": "https://res.cloudinary.com/dzbzwyksl/image/upload/v1784095129/quiz_1_plltvj.png",
+      "category": "General Knowledge",
+      "difficulty": "Easy",
+      "timePerQuestion": 15,
+      "totalQuestions": 10
+    },
+    {
+      "id": "quiz_2",
+      "title": "React.js Basics",
+      "description": "React.js Basics quiz.",
+      "thumbnail": "https://res.cloudinary.com/dzbzwyksl/image/upload/v1784095204/quiz_2_w38zhi.png",
+      "category": "Programming",
+      "difficulty": "Medium",
+      "timePerQuestion": 20,
+      "totalQuestions": 10
+    },
+    {
+      "id": "quiz_3",
+      "title": "Movies & Entertainment",
+      "description": "Movies & Entertainment quiz.",
+      "thumbnail": "https://res.cloudinary.com/dzbzwyksl/image/upload/v1784095227/quiz_3_stwrbk.png",
+      "category": "Entertainment",
+      "difficulty": "Easy",
+      "timePerQuestion": 15,
+      "totalQuestions": 10
+    },
+    {
+      "id": "quiz_4",
+      "title": "Science",
+      "description": "Science quiz.",
+      "thumbnail": "https://res.cloudinary.com/dzbzwyksl/image/upload/v1784095237/quiz_4_yjg2yw.png",
+      "category": "Science",
+      "difficulty": "Hard",
+      "timePerQuestion": 25,
+      "totalQuestions": 10
+    },
+    {
+      "id": "quiz_5",
+      "title": "Sports",
+      "description": "Sports quiz.",
+      "thumbnail": "https://res.cloudinary.com/dzbzwyksl/image/upload/v1784095244/quiz_5_akqo5l.png",
+      "category": "Sports",
+      "difficulty": "Medium",
+      "timePerQuestion": 15,
+      "totalQuestions": 10
+    }
+  ]
+}
